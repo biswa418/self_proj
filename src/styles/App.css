@@ -1,0 +1,34 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body{
+  position: relative;
+  overflow: hidden;
+}
+
+.box {
+  width: 200px;
+  padding: 30px;
+  aspect-ratio: 1;
+  background-color: darkslategray;
+  cursor: pointer;
+  transition: all cubic-bezier(.1,.5,.5,1) 0.4s;
+}
+
+.circle-cur {
+  pointer-events: none;
+  width: 20px;
+  aspect-ratio: 1;
+  position: absolute;
+  border-radius: 50%;
+  background-color: orange;
+  transition: all cubic-bezier(.1,.5,.5,1) 0.4s;
+}
+
+.box:hover+.circle-cur{
+  width: 150px;
+}
