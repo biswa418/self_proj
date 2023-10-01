@@ -8,6 +8,13 @@
 body{
   position: relative;
   overflow: hidden;
+  cursor: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .box {
@@ -15,20 +22,19 @@ body{
   padding: 30px;
   aspect-ratio: 1;
   background-color: darkslategray;
-  cursor: pointer;
-  transition: all cubic-bezier(.1,.5,.5,1) 0.4s;
+  /* cursor: pointer; */
+  /* transition: all cubic-bezier(.1,.5,.5,1) 0.4s; */
 }
 
 .circle-cur {
-  pointer-events: none;
-  width: 20px;
+  /* background-color: #111; */
+  background-color: rgb(255, 106, 0);
+  height: 20px;
   aspect-ratio: 1;
-  position: absolute;
   border-radius: 50%;
-  background-color: orange;
-  transition: all cubic-bezier(.1,.5,.5,1) 0.4s;
-}
-
-.box:hover+.circle-cur{
-  width: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: all linear .1s;
 }
