@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../styles/App.css";
 import { motion } from "framer-motion";
 
-const Cursor = () => {
+const Cursor = (props) => {
   const [top, setTop] = useState(0);
   const [left, setLeft] = useState(0);
-  const [cursorVariant, setCursorVariant] = useState("default");
+  const [hoverSize, sethoverSize] = useState(false);
+  const size = hoverSize ? "200" : "20";
+  const { firstText, secondText } = props;
 
   useEffect(() => {
     const moveCursor = (e) => {
@@ -20,38 +22,33 @@ const Cursor = () => {
     };
   }, []);
 
-  //main animation
-  const variants = {
-    default: {
-      x: left - 10,
-      y: top - 10,
-      scale: 1,
-    },
-
-    entered: {
-      height: 150,
-      width: 150,
-      x: left - 75,
-      y: top - 75,
-      mixBlendMode: "difference",
-    },
-  };
-
-  const textEnter = () => setCursorVariant("entered");
-  const textLeave = () => setCursorVariant("default");
-
   return (
     <>
-      <div
-        className="box"
-        onMouseEnter={textEnter}
-        onMouseLeave={textLeave}
-      ></div>
       <motion.div
-        className="circle-cur"
-        variants={variants}
-        animate={cursorVariant}
-      ></motion.div>
+        className="box"
+        animate={{
+          WebkitMaskSize: `${size}px`,
+          WebkitMaskPosition: `calc(${left}px - ${
+            size / 2
+          }px) calc(${top}px - ${size / 2}px)`,
+        }}
+        transition={{ type: "tween", ease: "backOut" }}
+      >
+        <p
+          onMouseEnter={() => {
+            sethoverSize(true);
+          }}
+          onMouseLeave={() => {
+            sethoverSize(false);
+          }}
+        >
+          {firstText}
+        </p>
+      </motion.div>
+
+      <div className="text">
+        <p>{secondText}</p>
+      </div>
     </>
   );
 };

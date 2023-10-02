@@ -5,7 +5,7 @@ import { Cursor } from "./index";
 function App() {
   return (
     <>
-      <Cursor />
+      <Cursor firstText={"Here is There."} secondText={"There is here."} />
     </>
   );
 }
