@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "../styles/App.css";
-import { Cursor } from "./index";
+import { Hero } from "../pages";
 
 function App() {
   return (
     <>
-      <Cursor firstText={"Here is There."} secondText={"There is here."} />
+      <Hero />
     </>
   );
 }
